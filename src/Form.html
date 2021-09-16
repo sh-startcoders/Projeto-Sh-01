@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastro</title>
 
-  <link rel="stylesheet" href="./Form.css">
+  <link rel="stylesheet" href="./css/Form.css">
   <link rel="stylesheet" href="./Css/bootstrap.min.css">
 
 </head>
 
 <body>
-  
-  <form action="" class="container">
-    <h3 class="p-3">Informações Pessoais</h3>
+
+  <form action="#" class="container">
+    <h3 class="mt-3">Informações Pessoais</h3>
     <hr>
-    
+
     <div class="mb-3">
-      <label for="name" class="form-label">Nome</label>
+      <label aria-required="true" for="name" class="form-label">Nome</label>
       <input type="text" class="form-control" id="name" placeholder="Nome completo">
     </div>
 
@@ -28,89 +28,143 @@
       <input type="text" class="form-control" id="nickname" placeholder="Apelido">
     </div>
 
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Documentos pessoais</label>
+      </div>
+
+      <select class="custom-select" id="SelectDocuments" onchange="ShowInputOtherDocuments(this)">
+        <option value="cpf">CPF</option>
+        <option value="rg">RG</option>
+        <option value="nis">NIS</option>
+        <option value="otherdocuments">Outros</option>
+      </select>
+
+      <div class="col-md-4">
+        <input type="textinput" id="InputOutroDocumento" style='display:none' class="form-control input-md">
+      </div>
+    </div>
+
+    </div>
     <div class='col-md-3'>
-      <div class="form-group">
-        <label for="dateNasc">Data de Nascimento</label>
+      <div class="form-group" id="DivDataNasc">
+        <label class="mb-3" for="dateNasc">Data de Nascimento</label>
         <!-- Datepicker as text field -->
-        <div class="input-group date" data-date-format="dd/mm/yyyy">
+        <div class="input-group date mb-3" data-date-format="dd/mm/yyyy">
           <input type="date" class="form-control" placeholder="dd/mm/yyyy">
           <div class="input-group-addon">
             <!-- <span class="glyphicon glyphicon-th">icon</span> -->
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="row mt-3">
-      <div class="col">
-        <span>Sexo</span> <br>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="InputSex" id="inlineRadio1">
-          <label class="form-check-label" id="masc" for="masc">Masculino</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="InputSex" id="inlineRadio2">
-          <label class="form-check-label" id="fem" for="fem">Feminino</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="InputSex" id="inlineRadio2">
-          <label class="form-check-label" id="others" for="others">Outros</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-group mt-3 mb-3 col">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Estado de Nascimento</label>
+        <div class="form-row mb-3">
+          <div class="form-group col-md-4 mt-3 mb-3">
+            <input type="number" placeholder="Idade" class="form-control" id="OtherDocument">
           </div>
-          <select class="custom-select" id="inputGroupSelect01">
-            <option value="AC">Acre</option>
-            <option value="AL">Alagoas</option>
-            <option value="AP">Amapá</option>
-            <option value="AM">Amazonas</option>
-            <option value="BA">Bahia</option>
-            <option value="CE">Ceará</option>
-            <option value="DF">Distrito Federal</option>
-            <option value="ES">Espírito Santo</option>
-            <option value="GO">Goiás</option>
-            <option value="MA">Maranhão</option>
-            <option value="MT">Mato Grosso</option>
-            <option value="MS">Mato Grosso do Sul</option>
-            <option value="MG">Minas Gerais</option>
-            <option value="PA">Pará</option>
-            <option value="PB">Paraíba</option>
-            <option value="PR">Paraná</option>
-            <option value="PE">Pernambuco</option>
-            <option value="PI">Piauí</option>
-            <option value="RJ">Rio de Janeiro</option>
-            <option value="RN">Rio Grande do Norte</option>
-            <option value="RS">Rio Grande do Sul</option>
-            <option value="RO">Rondônia</option>
-            <option value="RR">Roraima</option>
-            <option value="SC">Santa Catarina</option>
-            <option value="SP">São Paulo</option>
-            <option value="SE">Sergipe</option>
-            <option value="TO">Tocantins</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="inputCity">Digite a cidade</label>
-          <input type="text" class="form-control" id="inputCity">
         </div>
       </div>
     </div>
+
+    <div class="input-group mb-3 mt-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text">Sexo</label>
+      </div>
+      <select class="custom-select" id="SelectSex" onchange='ShowInputSexOther(this)'>
+        <option value="masc">Masculino</option>
+        <option value="fem">Feminino</option>
+        <option value="othersex">Outros</option>
+      </select>
+
+      <div class="col-md-4">
+        <input type="textinput" id="outros" style='display:none' placeholder="Digite o Sexo" class="form-control input-md">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-group mt-3 mb-3 col">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Estado de Nascimento</label>
+        </div>
+        <select class="custom-select" id="SelectStates">
+          <option value="AC">Acre</option>
+          <option value="AL">Alagoas</option>
+          <option value="AP">Amapá</option>
+          <option value="AM">Amazonas</option>
+          <option value="BA">Bahia</option>
+          <option value="CE">Ceará</option>
+          <option value="DF">Distrito Federal</option>
+          <option value="ES">Espírito Santo</option>
+          <option value="GO">Goiás</option>
+          <option value="MA">Maranhão</option>
+          <option value="MT">Mato Grosso</option>
+          <option value="MS">Mato Grosso do Sul</option>
+          <option value="MG">Minas Gerais</option>
+          <option value="PA">Pará</option>
+          <option value="PB">Paraíba</option>
+          <option value="PR">Paraná</option>
+          <option value="PE">Pernambuco</option>
+          <option value="PI">Piauí</option>
+          <option value="RJ">Rio de Janeiro</option>
+          <option value="RN">Rio Grande do Norte</option>
+          <option value="RS">Rio Grande do Sul</option>
+          <option value="RO">Rondônia</option>
+          <option value="RR">Roraima</option>
+          <option value="SC">Santa Catarina</option>
+          <option value="SP">São Paulo</option>
+          <option value="SE">Sergipe</option>
+          <option value="TO">Tocantins</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="mb-3" for="inputCity">Digite a cidade</label>
+        <input type="text" class="form-control" id="inputCity">
+      </div>
+    </div>
+    </div>
+
+    <h3 class="mt-3">Conhecendo</h3>
+    <hr>
+
+    <div class="row mb-3">
+      <div class="col">
+
+        <label> Conhece algum projeto social?</label>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+          <label class="form-check-label">Sim</label>
+        </div>
+
+        <div class="form-check form-check-inline mb-3">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+          <label class="form-check-label">Não</label>
+        </div>
+        <input type="text" class="form-control" placeholder="Se sim, qual?">
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="">Onde costuma dormir?</label>
+      <input type="text" class="form-control" id="OndeCostumaDormir">
+    </div>
+
+    <div class="form-group">
+      <label for="">Onde costuma ficar durante o dia?</label>
+      <input type="text" class="form-control" id="OndeCostumaDormir">
+    </div>
+
     <button type="button" class="btn btn-primary mt-3">Enviar</button>
   </form>
 
-
+  <script src="./js/Form.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <script
     src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js'></script>
   <script>
-  </body>
-  </html>
+  </body >
+  </html >
