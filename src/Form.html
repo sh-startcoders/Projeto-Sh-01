@@ -1,34 +1,52 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro</title>
-
-  <link rel="stylesheet" href="./Form.css">
-  <link rel="stylesheet" href="./Css/bootstrap.min.css">
-
+  <!--Não está usando
+    <link rel="stylesheet" href="form.css">-->
+  <title>Cadastro de Pessoas  - Ninho Social</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  
+  
 </head>
 
 <body>
   
-  <form action="" class="container">
-    <h3 class="p-3">Informações Pessoais</h3>
+  <form action="" class="container" style="justify-content: center;padding-bottom:20px; min-height: 100vh;; background-color: rgb(202, 209, 216);">
+    <h3 class="p-3" style="text-transform:uppercase;text-align:center;font-weight: bold;">
+      Informações Pessoais</h3>
     <hr>
     
-    <div class="mb-3">
-      <label for="name" class="form-label">Nome</label>
-      <input type="text" class="form-control" id="name" placeholder="Nome completo">
+    <div class="mb-2 col-md-5">
+      <label for="name" class="form-label">Nome Completo</label>
+      <input type="text" class="form-control" id="name" placeholder="Digite o nome completo">
     </div>
 
-    <div class="mb-3">
-      <label for="nickname" class="form-label">Como é conhecido?</label>
-      <input type="text" class="form-control" id="nickname" placeholder="Apelido">
+    <div class="mb-3 col-md-5">
+      <label for="nickname" class="form-label">Apelido?</label>
+      <input type="text" class="form-control" id="nickname" placeholder="Digite o apelido">
+    </div>
+     <!--Documentos com máscara-->
+    <div class="mb-3 col-md-5">
+      <label for="name" class="form-label">CPF</label>
+      <input type="text" class="form-control" id="cpf" onKeyPress="mask(this)" onBlur="return authLogin(this)" placeholder="000.000.000-00">
     </div>
 
-    <div class='col-md-3'>
+    <div class="mb-3 col-md-5">
+      <label for="name" class="form-label">RG</label>
+      <input type="text" class="form-control" id="rg" onKeyPress="mask(this)" onBlur="return authLogin(this)" placeholder="00.000.00-00">
+    </div>
+
+      <div class="mb-3 col-md-5">
+        <label for="name" class="form-label">NIS</label>
+      <input type="text" class="form-control" id="nis" onkeyPress="mask(this)" onBlur="return authLogin(this)" placeholder="000.000000.00-00">      
+    </div>
+    <!--Fim dos documentos com máscara-->
+
+    <div class='col-md-5'>
       <div class="form-group">
         <label for="dateNasc">Data de Nascimento</label>
         <!-- Datepicker as text field -->
@@ -41,7 +59,7 @@
       </div>
     </div>
 
-    <div class="row mt-3">
+    <div class="row mt-3 col-md-5">
       <div class="col">
         <span>Sexo</span> <br>
         <div class="form-check form-check-inline">
@@ -56,14 +74,20 @@
           <input class="form-check-input" type="radio" name="InputSex" id="inlineRadio2">
           <label class="form-check-label" id="others" for="others">Outros</label>
         </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="InputSex" id="inlineRadio2">
+          <label class="form-check-label" id="others" for="others">Prefiro não opinar</label>
+        </div>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="input-group mt-3 mb-3 col">
+      <div class="row col-md-">
+        <div class="input-group mt-3 mb-3">
           <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Estado de Nascimento</label>
+            <label class="input-group-text" for="inputGroupSelect01" style="padding-right: 10px;">Local de Nascimento</label>
           </div>
-          <select class="custom-select" id="inputGroupSelect01">
+          <select class="custom-select" id="inputGroupSelect01" >
+            <option value="OUT">Fora do Brasil</option>         
             <option value="AC">Acre</option>
             <option value="AL">Alagoas</option>
             <option value="AP">Amapá</option>
@@ -96,13 +120,17 @@
       </div>
 
       <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="inputCity">Digite a cidade</label>
+        <div class="form-group col-md-5">
+          <label for="inputCity">Digite a Cidade</label>
           <input type="text" class="form-control" id="inputCity">
+          <div class="form-check form-check-inline mt-2">
+            <input class="form-check-input" type="radio" name="InputCity" id="inlineRadio2">
+            <label class="form-check-label" id="cityNo" for="cityNo">Não me lembro</label>
+          </div>
         </div>
       </div>
-    </div>
-    <button type="button" class="btn btn-primary mt-3">Enviar</button>
+    
+    <button type="button" class="btn btn-warning mt-3 col-md-5">Enviar</button>
   </form>
 
 
@@ -110,7 +138,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <script
-    src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js'></script>
-  <script>
+    src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js'>
+  </script>
+  <script src="./js/script.js"></script>
+ 
+
   </body>
   </html>
