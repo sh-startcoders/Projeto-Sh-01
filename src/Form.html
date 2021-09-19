@@ -5,19 +5,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Cadastro</title>
 
-  <link rel="stylesheet" href="./Form.css">
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="./Css/bootstrap.min.css">
 
 </head>
 
 <body>
-  
+  <!-- INformações pessoais -->
   <form action="" class="container">
     <h3 class="p-3">Informações Pessoais</h3>
     <hr>
-    
+
     <div class="mb-3">
       <label for="name" class="form-label">Nome</label>
       <input type="text" class="form-control" id="name" placeholder="Nome completo">
@@ -41,6 +42,7 @@
       </div>
     </div>
 
+    <!-- Sexo -->
     <div class="row mt-3">
       <div class="col">
         <span>Sexo</span> <br>
@@ -53,7 +55,7 @@
           <label class="form-check-label" id="fem" for="fem">Feminino</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="InputSex" id="inlineRadio2">
+          <input class="form-check-input" type="radio" name="InputSex" id="inlineRadio3">
           <label class="form-check-label" id="others" for="others">Outros</label>
         </div>
       </div>
@@ -102,15 +104,163 @@
         </div>
       </div>
     </div>
+
+    <hr>
+    <h3 class="p-3">Saúde</h3>
+    <hr>
+
+    <!-- Você se sente saudável? -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Você se sente saudável?</span> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="saudavel" id="simSaudavel">
+          <label class="form-check-label" id="saudavelSim" for="simSaudavel">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="saudavel" id="simSaudavel">
+          <label class="form-check-label" id="saudavelNo" for="noSaudavel">Não</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Faz acompanhamento médico? -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Você faz algum acompanhamento médico?</span> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Sim" name="acompanhamentoMedico" id="simMedico"
+            onchange="medicalTreatment(this)">
+          <label class="form-check-label" for="simMedico">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Nao" name="acompanhamentoMedico" id="naoMedico"
+          onchange="medicalTreatment(this)">
+          <label class="form-check-label" for="noMedico">Não</label>
+        </div>
+
+
+        <!-- Caso a resposta seja SIM deve aparecer -->
+        <div class="form-row">
+          <div class="form-group col-md-4" id="inputMedical" style="display: none">
+            <label for="acompanhamentoMedico">Onde faz o seu acompanhamento médico?</label>
+            <input type="text" class="form-control" id="acompanhamentoTextMedico">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Faz o uso de algum medicamento? -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Você faz o uso de algum medicamento?</span> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Sim" name="usaMedicamento" id="noMedicamento" onchange="medications(this)">
+          <label class="form-check-label" id="simMedico" for="simMedicamento">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Nao" name="usaMedicamento" id="noMedicamento" onchange="medications(this)">
+          <label class="form-check-label" id="noMedico" for="noMedicamento">Não</label>
+        </div>
+
+        <!-- Caso a resposta seja SIM deve aparecer -->
+        <div class="form-row">
+          <div class="form-group col-md-4" id="inputMedications" style="display: none">
+            <label for="acompanhamentoMedico">De quais tipos?</label>
+            <input type="text" class="form-control" id="tipoMedicamentos">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- Possui deficiência? -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Possui alguma deficiência?</span> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Sim" name="temDeficiencia" id="simDeficiencia" onchange="pcd(this);streetIllness(this)">
+          <label class="form-check-label" id="simDeficiencia" for="simDeficiencia">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Nao" name="temDeficiencia" id="noDeficiencia" onchange="pcd(this);streetIllness(this)">
+          <label class="form-check-label" id="noDeficiencia" for="noDeficiencia">Não</label>
+        </div>
+
+        <!-- Caso a resposta seja SIM deve aparecer -->
+        <div class="form-row">
+          <div class="form-group col-md-4" id="inputPcd" style="display: none">
+            <label for="acompanhamentoMedico">Qual?</label>
+            <input type="text" class="form-control" id="deficiencia">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- Possui Doenca? -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Possui alguma doença?</span> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Sim" name="possuiDoenca" id="simDoenca" onchange="illness(this);streetIllness(this)">
+          <label class="form-check-label" id="simDoenca" for="simDoenca">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Nao" name="possuiDoenca" id="noDoenca" onchange="illness(this);streetIllness(this)">
+          <label class="form-check-label" id="noDoenca" for="noDoenca">Não</label>
+        </div>
+
+        <!-- Caso a resposta seja SIM deve aparecer -->
+        <div class="form-row" id="inputIllness" style="display: none">
+          <div class="form-group col-md-4">
+            <label for="acompanhamentoMedico">Qual?</label>
+            <input type="text" class="form-control" id="doenca">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Caso DOENÇA ou DEFICIÊNCIA esteja MARCADA com sim inserir abaixo -->
+    <div class="row mt-3" id="inputStreetIlness" style="display: none">
+      <div class="col">
+        <span>Sua doença/deficiência foi adquirida na rua?</span> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="adquirirRua" id="simRua">
+          <label class="form-check-label" id="simRua" for="simRua">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="adquirirRua" id="noRua">
+          <label class="form-check-label" id="noRua" for="noRua">Não</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slider mobilidade -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Qual seu grau de mobilidade? (Quanto mais a direita melhor)</span><br>        
+        <label for="customRange2" class="form-label"></label>
+        <input type="range" class="form-range" min="0" max="5" id="customRange2" list="tickmarks">
+      </div>
+    </div>
+
     <button type="button" class="btn btn-primary mt-3">Enviar</button>
   </form>
 
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js">
+  </script>
 
-  <script
-    src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js'></script>
-  <script>
-  </body>
-  </html>
+  <!-- scriptInput -->
+  <script src="js/scriptInputs.js"></script>
+
+</body>
+
+</html>
