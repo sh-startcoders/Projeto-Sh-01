@@ -10,10 +10,17 @@
   <link rel="stylesheet" href="./css/Form.css">
   <link rel="stylesheet" href="./Css/bootstrap.min.css">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-
+  <header>
+    <img src="../assets/logoNinhSocial.jpg" alt="logo">
+    <span class="">Projeto Lavanderia</span>
+  </header>
   <form action="#" class="container">
     <h3 class="mt-3">Informações Pessoais</h3>
     <hr>
@@ -28,12 +35,13 @@
       <input type="text" class="form-control" id="nickname" placeholder="Apelido">
     </div>
 
+    <!-- Div referente a documentos pessoais -->
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <label class="input-group-text" for="inputGroupSelect01">Documentos pessoais</label>
       </div>
 
-      <select class="custom-select" id="SelectDocuments" onchange="ShowInputOtherDocuments(this)">
+      <select class="custom-select rounded-2" id="SelectDocuments" onchange="ShowInputOtherDocuments(this)">
         <option value="cpf">CPF</option>
         <option value="rg">RG</option>
         <option value="nis">NIS</option>
@@ -44,17 +52,14 @@
         <input type="textinput" id="InputOutroDocumento" style='display:none' class="form-control input-md">
       </div>
     </div>
-
-    </div>
+    <!--  -->
+    <!-- Div referente aos campos data de nascimento e idade -->
     <div class='col-md-3'>
       <div class="form-group" id="DivDataNasc">
         <label class="mb-3" for="dateNasc">Data de Nascimento</label>
         <!-- Datepicker as text field -->
         <div class="input-group date mb-3" data-date-format="dd/mm/yyyy">
           <input type="date" class="form-control" placeholder="dd/mm/yyyy">
-          <div class="input-group-addon">
-            <!-- <span class="glyphicon glyphicon-th">icon</span> -->
-          </div>
         </div>
 
         <div class="form-row mb-3">
@@ -64,28 +69,33 @@
         </div>
       </div>
     </div>
-
+    <!--  -->
+    
+    <!-- Div referente ao input do sexo -->
     <div class="input-group mb-3 mt-3">
       <div class="input-group-prepend">
         <label class="input-group-text">Sexo</label>
       </div>
-      <select class="custom-select" id="SelectSex" onchange='ShowInputSexOther(this)'>
+      <select class="custom-select rounded-2" id="SelectSex" onchange='ShowInputSexOther(this)'>
         <option value="masc">Masculino</option>
         <option value="fem">Feminino</option>
         <option value="othersex">Outros</option>
       </select>
 
       <div class="col-md-4">
-        <input type="textinput" id="outros" style='display:none' placeholder="Digite o Sexo" class="form-control input-md">
+        <input type="textinput" id="outros" style='display:none' placeholder="Digite o Sexo"
+          class="form-control input-md">
       </div>
     </div>
+    <!--  -->
 
+    <!-- Div referente ao estado de nascimento e a cidade -->
     <div class="row">
       <div class="input-group mt-3 mb-3 col">
         <div class="input-group-prepend">
           <label class="input-group-text" for="inputGroupSelect01">Estado de Nascimento</label>
         </div>
-        <select class="custom-select" id="SelectStates">
+        <select class="custom-select rounded-2" id="SelectStates">
           <option value="AC">Acre</option>
           <option value="AL">Alagoas</option>
           <option value="AP">Amapá</option>
@@ -116,15 +126,14 @@
         </select>
       </div>
     </div>
-
     <div class="form-row">
       <div class="form-group col-md-4">
         <label class="mb-3" for="inputCity">Digite a cidade</label>
         <input type="text" class="form-control" id="inputCity">
       </div>
     </div>
-    </div>
 
+    <!-- Segunda parte do Formulário -->
     <h3 class="mt-3">Conhecendo</h3>
     <hr>
 
@@ -155,6 +164,162 @@
       <label for="">Onde costuma ficar durante o dia?</label>
       <input type="text" class="form-control" id="OndeCostumaDormir">
     </div>
+    <!--  -->
+
+    <!-- Terceira parte do Formulário Saúde -->
+    <h3 class="mt-3">Saúde</h3>
+    <hr>
+
+    <!-- Você se sente saudável? -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Você se sente saudável?</span> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="saudavel" id="simSaudavel">
+          <label class="form-check-label" id="saudavelSim" for="simSaudavel">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="saudavel" id="simSaudavel">
+          <label class="form-check-label" id="saudavelNo" for="noSaudavel">Não</label>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+
+    <!-- Faz acompanhamento médico? -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Você faz algum acompanhamento médico?</span> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Sim" name="acompanhamentoMedico" id="simMedico"
+            onchange="medicalTreatment(this)">
+          <label class="form-check-label" for="simMedico">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Nao" name="acompanhamentoMedico" id="naoMedico"
+            onchange="medicalTreatment(this)">
+          <label class="form-check-label" for="noMedico">Não</label>
+        </div>
+
+
+        <!-- Caso a resposta seja SIM deve aparecer -->
+        <div class="form-row">
+          <div class="form-group col-md-4" id="inputMedical" style="display: none">
+            <label for="acompanhamentoMedico">Onde faz o seu acompanhamento médico?</label>
+            <input type="text" class="form-control" id="acompanhamentoTextMedico">
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!--  -->
+
+    <!-- Faz o uso de algum medicamento? -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Você faz o uso de algum medicamento?</span> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Sim" name="usaMedicamento" id="noMedicamento"
+            onchange="medications(this)">
+          <label class="form-check-label" id="simMedico" for="simMedicamento">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Nao" name="usaMedicamento" id="noMedicamento"
+            onchange="medications(this)">
+          <label class="form-check-label" id="noMedico" for="noMedicamento">Não</label>
+        </div>
+
+        <!-- Caso a resposta seja SIM deve aparecer -->
+        <div class="form-row">
+          <div class="form-group col-md-4" id="inputMedications" style="display: none">
+            <label for="acompanhamentoMedico">De quais tipos?</label>
+            <input type="text" class="form-control" id="tipoMedicamentos">
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!--  -->
+
+    <!-- Possui deficiência? -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Possui alguma deficiência?</span> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Sim" name="temDeficiencia" id="simDeficiencia"
+            onchange="pcd(this);streetIllness(this)">
+          <label class="form-check-label" id="simDeficiencia" for="simDeficiencia">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Nao" name="temDeficiencia" id="noDeficiencia"
+            onchange="pcd(this);streetIllness(this)">
+          <label class="form-check-label" id="noDeficiencia" for="noDeficiencia">Não</label>
+        </div>
+
+        <!-- Caso a resposta seja SIM deve aparecer -->
+        <div class="form-row">
+          <div class="form-group col-md-4" id="inputPcd" style="display: none">
+            <label for="acompanhamentoMedico">Qual?</label>
+            <input type="text" class="form-control" id="deficiencia">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Possui Doenca? -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Possui alguma doença?</span> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Sim" name="possuiDoenca" id="simDoenca"
+            onchange="illness(this);streetIllness(this)">
+          <label class="form-check-label" id="simDoenca" for="simDoenca">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Nao" name="possuiDoenca" id="noDoenca"
+            onchange="illness(this);streetIllness(this)">
+          <label class="form-check-label" id="noDoenca" for="noDoenca">Não</label>
+        </div>
+
+        <!-- Caso a resposta seja SIM deve aparecer -->
+        <div class="form-row" id="inputIllness" style="display: none">
+          <div class="form-group col-md-4">
+            <label for="acompanhamentoMedico">Qual?</label>
+            <input type="text" class="form-control" id="doenca">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Caso DOENÇA ou DEFICIÊNCIA esteja MARCADA com sim inserir abaixo -->
+    <div class="row mt-3" id="inputStreetIlness" style="display: none">
+      <div class="col">
+        <span>Sua doença/deficiência foi adquirida na rua?</span> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="adquirirRua" id="simRua">
+          <label class="form-check-label" id="simRua" for="simRua">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="adquirirRua" id="noRua">
+          <label class="form-check-label" id="noRua" for="noRua">Não</label>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+
+    <!-- Slider mobilidade -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Qual seu grau de mobilidade? (Quanto mais a direita melhor)</span> <br>
+        <div class="range-input">
+          <input type="range" class="form-range" min="0" max="10" id="customRange2" list="tickmarks">
+        </div>
+      </div>
+    </div>
+    <!--  -->
+
 
     <button type="button" class="btn btn-primary mt-3">Enviar</button>
   </form>
@@ -166,5 +331,5 @@
   <script
     src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js'></script>
   <script>
-  </body >
-  </html >
+</body >
+</html >
