@@ -9,7 +9,7 @@ function ShowInputSexOther(el) {
 function ShowInputOtherDocuments(el) {
   let InputOtherDocuments = document.getElementById('InputOutroDocumento');
 
-  if (el.value ? InputOtherDocuments.style.display = 'block' : InputOtherDocuments = 'none') { 
+  if (el.value ? InputOtherDocuments.style.display = 'block' : InputOtherDocuments = 'none') {
   }
 }
 
@@ -37,9 +37,26 @@ function illness(el) {
   if (el.value == "Sim" ? inputIllness.style.display = "block" : inputIllness.style.display = "none");
 }
 
-function streetIllness(el){
+function streetIllness(el) {
   let inputStreetIllness = document.getElementById("inputStreetIlness");
 
-  if( el.value == 'Sim' ? inputStreetIllness.style.display = "block" : inputStreetIllness.style.display = "none"){
+  if (el.value == 'Sim' ? inputStreetIllness.style.display = "block" : inputStreetIllness.style.display = "none") {
   }
-} 
+}
+
+
+// let rangeInput = document.querySelector(".range-input input");
+// let rangeValue = document.querySelector(".range-input .ChangeValeuSlider div");
+
+// let start = parseFloat(rangeInput.min);
+// let end = parseFloat(rangeInput.max);
+// let step = parseFloat(rangeInput.step);
+
+// for (let i = start; i <= end; i += step) {
+//   rangeValue.innerHTML += '<div>' + i + '</div>';
+// }
+
+// rangeInput.addEventListener("input", function () {
+//   let top = parseFloat(rangeInput.value) / step * -40;
+//   rangeValue.style.marginTop = top + "px";
+// });
