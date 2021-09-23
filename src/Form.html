@@ -19,20 +19,23 @@
 <body>
   <header>
     <img src="../assets/logoNinhSocial.jpg" alt="logo">
-    <span class="">Projeto Lavanderia</span>
+    <span>Projeto Lavanderia</span>
   </header>
-  <form action="#" class="container">
+
+  <form action="#" class="container-fluid">
     <h3 class="mt-3">Informações Pessoais</h3>
     <hr>
 
-    <div class="mb-3">
-      <label aria-required="true" for="name" class="form-label">Nome</label>
-      <input type="text" class="form-control" id="name" placeholder="Nome completo">
-    </div>
+    <div class="row mb-3">
+      <div class="col-sm">
+        <label aria-required="true" for="name" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="name" placeholder="Nome completo">
+      </div>
 
-    <div class="mb-3">
-      <label for="nickname" class="form-label">Como é conhecido?</label>
-      <input type="text" class="form-control" id="nickname" placeholder="Apelido">
+      <div class="col-sm">
+        <label for="nickname" class="form-label">Como é conhecido?</label>
+        <input type="text" class="form-control" id="nickname" placeholder="Apelido">
+      </div>
     </div>
 
     <!-- Div referente a documentos pessoais -->
@@ -53,24 +56,24 @@
       </div>
     </div>
     <!--  -->
-    <!-- Div referente aos campos data de nascimento e idade -->
-    <div class='col-md-3'>
-      <div class="form-group" id="DivDataNasc">
-        <label class="mb-3" for="dateNasc">Data de Nascimento</label>
-        <!-- Datepicker as text field -->
-        <div class="input-group date mb-3" data-date-format="dd/mm/yyyy">
-          <input type="date" class="form-control" placeholder="dd/mm/yyyy">
-        </div>
 
-        <div class="form-row mb-3">
-          <div class="form-group col-md-4 mt-3 mb-3">
-            <input type="number" placeholder="Idade" class="form-control" id="OtherDocument">
-          </div>
+    <!-- Div referente aos campos data de nascimento e idade -->
+    <div class="row">
+      <div class="col-sm col-md-2">
+        <label for="DateNasc">Data de Nascimento</label>
+        <div class="form-group date mb-3">
+          <input type="date" class="form-control col-xs-2">
+        </div>
+      </div>
+      
+      <div class="col-sm">
+        <div class="form-group col-md-1">
+          <input type="number" placeholder="Idade" class="form-control mt-4">
         </div>
       </div>
     </div>
     <!--  -->
-    
+
     <!-- Div referente ao input do sexo -->
     <div class="input-group mb-3 mt-3">
       <div class="input-group-prepend">
@@ -93,7 +96,7 @@
     <div class="row">
       <div class="input-group mt-3 mb-3 col">
         <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Estado de Nascimento</label>
+          <label class="input-group-text" for="StateOrigin">Estado de Nascimento</label>
         </div>
         <select class="custom-select rounded-2" id="SelectStates">
           <option value="AC">Acre</option>
@@ -140,15 +143,15 @@
     <div class="row mb-3">
       <div class="col">
 
-        <label> Conhece algum projeto social?</label>
+        <label>Conhece algum projeto social?</label>
 
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+          <input class="form-check-input" type="checkbox" id="SimProjetoSocial" value="sim">
           <label class="form-check-label">Sim</label>
         </div>
 
         <div class="form-check form-check-inline mb-3">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+          <input class="form-check-input" type="checkbox" id="NaoProjetoSocial" value="nao">
           <label class="form-check-label">Não</label>
         </div>
         <input type="text" class="form-control" placeholder="Se sim, qual?">
@@ -162,7 +165,7 @@
 
     <div class="form-group">
       <label for="">Onde costuma ficar durante o dia?</label>
-      <input type="text" class="form-control" id="OndeCostumaDormir">
+      <input type="text" class="form-control" id="OndeCostumaPassarDia">
     </div>
     <!--  -->
 
@@ -179,7 +182,7 @@
           <label class="form-check-label" id="saudavelSim" for="simSaudavel">Sim</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="saudavel" id="simSaudavel">
+          <input class="form-check-input" type="radio" name="saudavel" id="naoSaudavel">
           <label class="form-check-label" id="saudavelNo" for="noSaudavel">Não</label>
         </div>
       </div>
@@ -219,7 +222,7 @@
       <div class="col">
         <span>Você faz o uso de algum medicamento?</span> <br>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" value="Sim" name="usaMedicamento" id="noMedicamento"
+          <input class="form-check-input" type="radio" value="Sim" name="usaMedicamento" id="simMedicamento"
             onchange="medications(this)">
           <label class="form-check-label" id="simMedico" for="simMedicamento">Sim</label>
         </div>
@@ -314,7 +317,7 @@
       <div class="col">
         <span>Qual seu grau de mobilidade? (Quanto mais a direita melhor)</span> <br>
         <div class="range-input">
-          <input type="range" class="form-range" min="0" max="10" id="customRange2" list="tickmarks">
+          <input type="range" class="form-range" min="0" max="10" id="SliderMobilidade">
         </div>
       </div>
     </div>
