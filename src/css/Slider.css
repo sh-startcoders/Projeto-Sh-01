@@ -1,0 +1,25 @@
+  .container-slider{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .sliderValue{
+    
+  }
+  
+  .field{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .value-left{
+    margin-right: 1rem;
+  }
+  .value-right{
+    margin-left: 1rem;
+  }
+  .range-input{
+    width: 300px;
+  }
+  
