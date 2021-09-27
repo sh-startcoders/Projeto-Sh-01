@@ -46,6 +46,7 @@
       </div>
 
       <select class="custom-select rounded-2" id="SelectDocuments" onchange="ShowInputOtherDocuments(this)">
+        <option value="" selected>Escolha o documento</option>
         <option value="cpf">CPF</option>
         <option value="rg">RG</option>
         <option value="nis">NIS</option>
@@ -53,7 +54,7 @@
       </select>
 
       <div class="col-md-4">
-        <input type="textinput" id="InputOutroDocumento" style='display:none' class="form-control input-md">
+        <input type="number" id="InputOutroDocumento" style='display:none' class="form-control input-md">
       </div>
     </div>
     <!--  -->
@@ -144,7 +145,7 @@
       </div>
 
       <div class="col-sm">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-6" id="DivInputCity">
           <!-- <label class="" for="inputCity">Digite a cidade</label> -->
           <input type="text" class="form-control mt-3" placeholder="Digite a cidade" id="inputCity">
         </div>
