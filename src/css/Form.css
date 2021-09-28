@@ -36,13 +36,14 @@ header span{
 #ContainerDivs-DateNasc-Age-Gender{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  /* background-color: blue; */
 }
 
 #Gender{
   width: 600px;
-  margin-left: 12.3rem;
 }
 
 #DivAge{
-  width: 200px;
+  width: 150px;
 }

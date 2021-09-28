@@ -112,7 +112,7 @@
           <div class="input-group-prepend">
             <label class="input-group-text" for="StateOrigin">Estado de Nascimento</label>
           </div>
-          <select class="custom-select rounded-2" id="SelectStates">
+          <select onchange="ShowInputCity(this)" class="custom-select rounded-2" id="SelectStates">
             <option value="AC">Acre</option>
             <option value="AL">Alagoas</option>
             <option value="AP">Amapá</option>
@@ -144,13 +144,12 @@
         </div>
       </div>
 
-      <div class="col-sm">
-        <div class="form-group col-md-6" id="DivInputCity">
-          <!-- <label class="" for="inputCity">Digite a cidade</label> -->
+      <div class="col-sm-12">
+        <div class="form-group col-md-4" id="DivInputCity">
           <input type="text" class="form-control mt-3" placeholder="Digite a cidade" id="inputCity">
         </div>
-
       </div>
+
     </div>
     <!-- Segunda parte do Formulário -->
     <h3 class="mt-3">Conhecendo</h3>
@@ -209,11 +208,13 @@
     <div class="row mt-3">
       <div class="col">
         <span>Você faz algum acompanhamento médico?</span> <br>
+
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" value="Sim" name="acompanhamentoMedico" id="simMedico"
             onchange="medicalTreatment(this)">
           <label class="form-check-label" for="simMedico">Sim</label>
         </div>
+
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" value="Nao" name="acompanhamentoMedico" id="naoMedico"
             onchange="medicalTreatment(this)">
@@ -237,11 +238,13 @@
     <div class="row mt-3">
       <div class="col">
         <span>Você faz o uso de algum medicamento?</span> <br>
+
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" value="Sim" name="usaMedicamento" id="simMedicamento"
             onchange="medications(this)">
           <label class="form-check-label" id="simMedico" for="simMedicamento">Sim</label>
         </div>
+
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" value="Nao" name="usaMedicamento" id="noMedicamento"
             onchange="medications(this)">
@@ -345,19 +348,273 @@
     </div>
 
     <!--  -->
+    <!-- Terceira Parte -->
+    <h3 class="mt-3">Família/Relações e vínculos</h3>
+    <hr>
+
+    <div class="mt-3 col-12">
+      <label for="motivo" class="form-label">Qual o motivo de estar nas ruas?</label>
+      <input type="text" class="form-control" id="motivo">
+    </div>
+
+    <div class="mb-2 mt-3 col-12">
+      <label for="dificuldade" class="form-label">Qual a maior dificuldade encontrada nas ruas?</label>
+      <input type="text" class="form-control" id="dificuldade">
+    </div>
+
+    <div class="mb-2 mt-3 col-12">
+      <label for="familia" class="form-label">Você tem família?</label>
+      <div class="radio">
+        <input class="radio form-check-input" type="radio" name="optradio" id="radiosim">
+        <label class="radio form-check-label" for="radiosim">
+          Sim
+        </label>
+      </div>
+
+      <div class="radio">
+        <input class="radio form-check-input" type="radio" name="optradio" id="radionao">
+        <label class="radio form-check-label" for="radionao">
+          Não
+        </label>
+      </div>
+    </div>
+
+    <div class="mb-2 mt-3 col-12">
+      <label for="vinculo" class="form-label">A quem você considera a sua família ou quem tem vínculo?</label>
+      <input type="text" class="form-control" id="vinculo">
+    </div>
+
+    <div class="mb-2 mt-3 col-12">
+      <label for="vinculo" class="form-label">Sua família sabe da sua situação nas ruas?</label>
+    </div>
+
+    <div>
+      <input onchange="ShowInputFamily(this)" value="Nao"  class="radio form-check-input" type="radio" name="optradio1" id="radionao">
+      <label class="radio form-check-label"  for="radionao"> Não </label>
+    </div>
+
+    <div>
+      <input onchange="ShowInputFamily(this)" value="Sim" class="radio form-check-input" type="radio" name="optradio1" id="radiosim">
+      <label class="radio form-check-label"  for="radiosim"> Sim </label>
+    </div>
+
+    <div class="mb-2 mt-3 col-12" id="DivFamilia" style="display: none;">
+      <label class="form-label">Se sim, já os contatou?</label>
+      <input type="text" class="form-control" id="contatou">
+    </div>
+
+    <div class="mb-2 mt-3 col-12">
+      <label for="conversa" class="form-label">Quando foi a última conversa?</label>
+      <input type="text" class="form-control" id="conversa">
+    </div>
+
+    <div class="mt-3 col-12">
+      <span for="chk-Yes" class="form-label">Você costuma ficar sozinho?</span>
+
+      <label class="form-check-label" for="radiosim">
+        <input class="radio form-check-input" value='Sim' type="radio" id="chk-Yes" name="RadioCheck"
+          onchange="ReasonAlone(this)" />
+        Sim
+      </label>
+
+      <label class="form-check-label" for="chk-No">
+        <input class="radio form-check-input" value='Não' type="radio" id="chk-No" name="RadioCheck"
+          onchange="ReasonAlone(this)" />
+        Não
+      </label>
+
+      <div class="form-group col-md-4" id="ShowDivInput" style="display: none">
+        <label class="form-label mt-3" for="ReasonAlone">Digite o motivo</label>
+        <input type="text" class="form-control" id="InputReasonAlone">
+      </div>
+    </div>
+
+    <div class="mb-2 mt-3 col-12">
+      <label for="conversa" class="form-label">Qual a maior dificuldade estando sozinho?</label>
+      <input type="text" class="form-control" id="conversa">
+    </div>
+
+    <div class="mt-3 mb-3 col-12">
+      <label for="alguem" class="form-label">Está com quem?</label>
+      <input type="text" class="form-control" id="alguem">
+    </div>
+
+    <div class=" col-12">
+      <span for="chk-Yes" class="form-label">Qual a relação com essas pessoas</span>
+    
+      <label class="form-check-label">
+        <input class="radio form-check-input" name="relationsPeople" value='trabalho' type="radio" id="trabalho" onchange="ShowRelations(this)" />
+        Trabalho
+      </label>
+    
+      <label class="form-check-label">
+        <input class="radio form-check-input" name="relationsPeople" value='afetivo' type="radio" id="afetivo" onchange="ShowRelations(this)" />
+        Afetivo
+      </label>
+      
+      <label class="form-check-label">
+        <input class="radio form-check-input" name="relationsPeople" value='sleepsafe' type="radio" id="sleepsafe" onchange="ShowRelations(this)" />
+        Dormir seguro
+      </label>
+      
+      <label class="form-check-label">
+        <input class="radio form-check-input" name="relationsPeople" value='outrarelacao' type="radio" id="outrarelacao" onchange="ShowRelations(this)" />
+        Outros
+      </label>
+    
+      <div class="form-group col-md-4" id="InputOtherRelation" style="display: none">
+        <input type="text" class="form-control mb-3" id="outrorelacaoinput" placeholder="Qual?">
+      </div>
+    </div>
+
+    <!--------------ESCOLARIDADE/PROFISSÃO---------------->
+    <h3 class="mt-3">Escolaridade/Profissão</h3>
+    <hr>
+
+    <div class="mt-2">
+      <span>Grau de instrução:</span>
+      <div class="form-check"></div>
+      <input class="form-check-input" type="radio" name="optradio5" id="escolaridade">
+      <label class="form-check-label mb-3" id="analfabeto" for="analfabeto">Analfabeto</label>
+    </div>
+
+    <div class="form-check form-check">
+      <input class="form-check-input" type="radio" name="optradio5" id="escolaridade">
+      <label class="form-check-label mb-3" id="ensfund" for="ensfund">Ensino Fundamental</label>
+    </div>
+
+    <div class="form-check form-check">
+      <input class="form-check-input " type="radio" name="optradio5" id="escolaridade">
+      <label class="form-check-label mb-3" id="ensmedio" for="ensmedio">Ensino Médio</label>
+    </div>
+
+    <div class="form-check form-check">
+      <input class="form-check-input" type="radio" name="optradio5" id="escolaridade">
+      <label class="form-check-label" id="ensinotecnico" for="ensinotecnico">Ensino Técnico. Qual?</label>
+    </div>
+    <input type="text" class="form-control mb-3" id="escolaridade">
+
+    <div class="form-check form-check">
+      <input class="form-check-input" type="radio" name="optradio5" id="escolaridade">
+      <label class="form-check-label" id="ensmedio" for="others">Ensino Superior. Qual?</label>
+    </div>
+    <input type="text" class="form-control" id="escolaridade">
+
+    <div class="mb-2 mt-3 col-12">
+      <label for="ensinoterminou" class="form-label">Terminou de estudar o ensino selecionado?</label>
+      <div class="radio">
+        <input class="radio form-check-input" type="radio" name="optradio6" id="radiosim">
+        <label class="radio form-check-label" for="radiosim">
+          Sim
+      </div>
+      <div class="radio">
+        <input class="radio form-check-input" type="radio" name="optradio6" id="radionao">
+        <label class="radio form-check-label" for="radionao">
+          Não
+        </label>
+      </div>
+      <label for="motivoparar" class="form-label mt-3">Se não. Porquê parou?</label>
+      <input type="text" class="form-control" id="escolaridade-incompleta">
+
+      <div class="mb-2 mt-3 col-12">
+        <label for="voltarestudar" class="form-label">Gostaria de voltar a estudar?</label>
+        <div class="radio">
+          <input class="radio form-check-input" type="radio" name="optradio7" id="radiosim">
+          <label class="radio form-check-label" for="radiosim">
+            Sim
+        </div>
+
+        <div class="radio">
+          <input class="radio form-check-input" type="radio" name="optradio7" id="radionao">
+          <label class="radio form-check-label" for="radionao">
+            Não
+          </label>
+        </div>
+
+        <div class="mb-2 mt-3 col-12">
+          <label for="temprofissao" class="form-label">Tem profissão?</label>
+          <div class="radio">
+            <input class="radio form-check-input" type="radio" name="optradio8" id="radiosim">
+            <label class="radio form-check-label" for="radiosim">
+              Sim
+            </label>
+          </div>
+          <div class="radio">
+            <input class="radio form-check-input" type="radio" name="optradio8" id="radionao">
+            <label class="radio form-check-label mb-3" for="radionao">
+              Não
+            </label>
+          </div>
+          <label for="temprofissao-texto" class="form-label">Se sim, qual/quais?</label>
+          <input type="text" class="form-control" id="temprofissao-texto">
 
 
-    <button type="button" class="btn btn-primary mt-3">Enviar</button>
+          <div class="mb-2 mt-3 col-12">
+            <label for="fezcurso" class="form-label">Fez algum curso?</label>
+            <div class="radio">
+              <input class="radio form-check-input" type="radio" name="optradio9" id="radiosim">
+              <label class="radio form-check-label" for="radiosim">
+                Sim
+              </label>
+            </div>
+            <div class="radio">
+              <input class="radio form-check-input" type="radio" name="optradio9" id="radionao">
+              <label class="radio form-check-label mb-3" for="radionao">
+                Não
+              </label>
+            </div>
+            <label for="fezcurso-texto" class="form-label">Se sim, qual/quais?</label>
+            <input type="text" class="form-control" id="fezcurso-texto">
+          </div>
+
+          <div class="mb-2 mt-3 col-12">
+            <label for="ultimotrabalho" class="form-label">Qual foi seu último trabalho?</label>
+            <input type="text" class="form-control" id="ultimotrabalho">
+          </div>
+
+          <div class="mb-2 mt-3 col-12">
+            <label for="ultimotrabalho-tempo" class="form-label">Quanto tempo ficou?</label>
+            <input type="text" class="form-control" id="ultimotrabalho-tempo">
+          </div>
+
+          <div class="mb-2 mt-3 col-12">
+            <label for="ultimotrabalho-sair" class="form-label">Porquê saiu?</label>
+            <input type="text" class="form-control" id="ultimotrabalho-sair">
+          </div>
+
+          <div class="mb-2 mt-3 col-12">
+            <label for="voltartrabalhar" class="form-label">Pretende (voltar a) trabalhar?</label>
+            <div class="radio">
+              <input class="radio form-check-input" type="radio" name="optradio10" id="radiosim">
+              <label class="radio form-check-label" for="radiosim"> Sim </label>
+            </div>
+            <div class="radio">
+              <input class="radio form-check-input" type="radio" name="optradio10" id="radionao">
+              <label class="radio form-check-label mb-3" for="radionao"> Não </label>
+            </div>
+            <label for="voltartrabalhar-texto" class="form-label">Se sim, fazendo o quê?</label>
+            <input type="text" class="form-control" id="voltartrabalhar-texto">
+          </div>
+
+          <div class="mb-2 mt-3 col-12">
+            <label for="qualificacoes" class="form-label">Quais qualificações/talentos(o o que você faz e gosta e as
+              pessoas te aplaudem)?</label>
+            <input type="text" class="form-control" id="qualificacoes">
+          </div>
+
+          <button type="button" class="btn btn-primary mt-3">Enviar</button>
   </form>
 
   <script src="./js/Form.js"></script>
   <script src="./js/Slider.js"></script>
+  <script src="./js/Script.js"></script>
   <script src="../src//js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <script
     src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js'></script>
-  <script>
-</body >
-</html >
+</body>
+
+</html>
