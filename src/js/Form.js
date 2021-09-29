@@ -80,3 +80,60 @@ function ShowInputFamily(el) {
 
   }
 }
+
+// Função para mostrar o input se já sofreu algum tipo de violência
+function ShowInputViolencia(el) {
+  let ViolenciaRuasInput = document.getElementById('ViolenciaRuasInput');
+
+  if(el.value == 'Sim' ? ViolenciaRuasInput.style.display = 'block' : ViolenciaRuasInput.style.display = 'none'){
+
+  }
+}
+
+function ShowInputServicoPublico(el) {
+  let InputServicoPublico = document.getElementById('InputServicoPublico');
+
+  if(el.value == 'Sim' ? InputServicoPublico.style.display = 'block' : InputServicoPublico.style.display = 'none'){
+
+  }
+}
+
+function ShowInputPlanos(el){
+  let PlanosInput = document.getElementById('PlanosInput');
+
+  if(el.value == 'Sim' ? PlanosInput.style.display = 'block' : PlanosInput.style.display = 'none'){
+
+  }
+}
+
+function ShowInputSenteFalta(el) {
+  let SenteFalta = document.getElementById('SenteFalta');
+
+  if(el.value = 'outraFalta' ? SenteFalta.style.display = 'block' : SenteFalta.style.display = 'none' ){
+
+  }
+}
+
+function InputAjudaNinhoSocial(el){
+  let ShowInputAjudaNinhoSocial = document.getElementById('ShowInputAjudaNinhoSocial');
+
+  if(el.value == 'Sim' ? ShowInputAjudaNinhoSocial.style.display = 'block' : ShowInputAjudaNinhoSocial.style.display = 'none'){
+
+  }
+}
+
+function InputInteresseLavanderia(el){
+  let ShowInputLavanderia = document.getElementById('ShowInputLavanderia');
+
+  if(el.value == 'Sim' ? ShowInputLavanderia.style.display = 'block' : ShowInputLavanderia.style.display = 'none'){
+    
+  }
+}
+
+function ShowInputContato(el){
+  let InputContato = document.getElementById('InputContato');
+
+  if(el.value == 'Sim' ? InputContato.style.display = 'block' : InputContato.style.display = 'none'){
+
+  }
+}
