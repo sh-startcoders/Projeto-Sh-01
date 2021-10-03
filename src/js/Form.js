@@ -137,3 +137,54 @@ function ShowInputContato(el){
 
   }
 }
+
+//Função para mostrar o input do ensino técnico
+function ShowInputEnsinoTecnico(el) {
+  let ensinoTecnicoInput = document.getElementById('ensinoTecnicoInput');
+
+  if(el.value == 'ensTecnico' ? ensinoTecnicoInput.style.display = 'block' : ensinoTecnicoInput.style.display = 'none'){
+
+  }
+}
+
+// Função para mostrar o input do ensino Superior
+function ShowInputEnsinoSuperior(el){
+  let ensinoSuperiorInput = document.getElementById('ensinoSuperiorInput');
+
+  if(el.value == 'ensSuperior' ? ensinoSuperiorInput.style.display = 'block' : ensinoSuperiorInput.style.display = 'none'){
+
+  }
+}
+
+// Função perguntando se terminou o ensino selecionado
+ function ShowInputEnsinoSelecionado(el) {
+   let terminouEnsino = document.getElementById('terminouEnsino');
+
+   if(el.value == 'Sim' ? terminouEnsino.style.display = 'block' : terminouEnsino.style.display = 'none'){
+
+   }
+ }
+
+ function ShowInputPossuiProfissão(el) {
+   let possuiProfissao = document.getElementById('possuiProfissao');
+
+   if(el.value == 'Sim' ? possuiProfissao.style.display = 'block' : possuiProfissao.style.display = 'none'){
+     
+   }
+ }
+
+ function ShowInputPossuiCurso(el){
+   let possuiCurso = document.getElementById('possuiCurso');
+
+   if(el.value == 'Sim' ? possuiCurso.style.display = 'block' : possuiCurso.style.display = 'none'){
+     
+   }
+ }
+
+ function ShowInputVoltarTrabalhar(el){
+   let voltarTrabalhar = document.getElementById('voltarTrabalhar');
+
+   if(el.value == 'Sim' ? voltarTrabalhar.style.display = 'block' : voltarTrabalhar.style.display = 'none'){
+     
+   }
+ }
