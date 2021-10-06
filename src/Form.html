@@ -8,32 +8,45 @@
   <title>Cadastro</title>
 
   <link rel="stylesheet" href="./css/Form.css">
+  <link rel="stylesheet" href="./css/Slider.css">
   <link rel="stylesheet" href="./Css/bootstrap.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
+  <header>
+    <img src="../assets/logoNinhSocial.jpg" alt="logo">
+    <span>Projeto Lavanderia</span>
+  </header>
 
-  <form action="#" class="container">
+  <form action="#" class="container-fluid">
     <h3 class="mt-3">Informações Pessoais</h3>
     <hr>
 
-    <div class="mb-3">
-      <label aria-required="true" for="name" class="form-label">Nome</label>
-      <input type="text" class="form-control" id="name" placeholder="Nome completo">
+    <div class="row mb-4">
+      <div class="col-sm">
+        <label for="name" id="name" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="name" placeholder="Nome completo">
+      </div>
+
+      <div class="col-sm">
+        <label for="nickname" id="nickname" class="form-label">Como é conhecido?</label>
+        <input type="text" class="form-control" id="nickname" placeholder="Apelido">
+      </div>
     </div>
 
-    <div class="mb-3">
-      <label for="nickname" class="form-label">Como é conhecido?</label>
-      <input type="text" class="form-control" id="nickname" placeholder="Apelido">
-    </div>
-
-    <div class="input-group mb-3">
+    <!-- Div referente a documentos pessoais -->
+    <div class="input-group mb-4">
       <div class="input-group-prepend">
         <label class="input-group-text" for="inputGroupSelect01">Documentos pessoais</label>
       </div>
 
-      <select class="custom-select" id="SelectDocuments" onchange="ShowInputOtherDocuments(this)">
+      <select class="custom-select rounded-2" id="SelectDocuments" onchange="ShowInputOtherDocuments(this)">
+        <option selected>Escolha o documento</option>
         <option value="cpf">CPF</option>
         <option value="rg">RG</option>
         <option value="nis">NIS</option>
@@ -41,105 +54,119 @@
       </select>
 
       <div class="col-md-4">
-        <input type="textinput" id="InputOutroDocumento" style='display:none' class="form-control input-md">
+        <input type="text" id="InputOutroDocumento" style='display:none' class="form-control input-md">
       </div>
     </div>
+    <!--  -->
 
-    </div>
-    <div class='col-md-3'>
-      <div class="form-group" id="DivDataNasc">
-        <label class="mb-3" for="dateNasc">Data de Nascimento</label>
-        <!-- Datepicker as text field -->
-        <div class="input-group date mb-3" data-date-format="dd/mm/yyyy">
-          <input type="date" class="form-control" placeholder="dd/mm/yyyy">
-          <div class="input-group-addon">
-            <!-- <span class="glyphicon glyphicon-th">icon</span> -->
+    <!-- Div referente aos campos data de nascimento e idade -->
+    <div id="ContainerDivs-DateNasc-Age-Gender">
+      <div class="row">
+
+        <div id="DataNasc" class="col-sm">
+          <label for="DateNasc" class="form-label">Data de Nascimento</label>
+          <div id="InputDateNasc" class="form-group col-md-6">
+            <input type="date" class="form-control">
           </div>
         </div>
 
-        <div class="form-row mb-3">
-          <div class="form-group col-md-4 mt-3 mb-3">
-            <input type="number" placeholder="Idade" class="form-control" id="OtherDocument">
+        <div class="col-sm">
+          <div id="DivAge" class="form-group col-md-4">
+            <label for="" class="form-label"> Digite a idade</label>
+            <input type="number" placeholder="Idade" class="form-control">
+          </div>
+        </div>
+
+        <!--  -->
+
+        <!-- Div referente ao input do sexo -->
+        <div class="col-sm">
+          <div class="input-group mb-4 mt-4" id="Gender">
+            <div class="input-group-prepend">
+              <label class="input-group-text mt-2">Gênero</label>
+            </div>
+
+            <div class="row">
+              <select class="custom-select rounded-2 mt-2" id="SelectSex" onchange='ShowInputSexOther(this)'>
+                <option value="masc">Masculino</option>
+                <option value="fem">Feminino</option>
+                <option value="othersex">Outros</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <input type="textinput" id="outros" style='display:none' placeholder="Digite o gênero que se identifica"
+                class=" row form-control input-md mt-2">
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <!--  -->
 
-    <div class="input-group mb-3 mt-3">
-      <div class="input-group-prepend">
-        <label class="input-group-text">Sexo</label>
-      </div>
-      <select class="custom-select" id="SelectSex" onchange='ShowInputSexOther(this)'>
-        <option value="masc">Masculino</option>
-        <option value="fem">Feminino</option>
-        <option value="othersex">Outros</option>
-      </select>
-
-      <div class="col-md-4">
-        <input type="textinput" id="outros" style='display:none' placeholder="Digite o Sexo" class="form-control input-md">
-      </div>
-    </div>
-
+    <!-- Div referente ao estado de nascimento e a cidade -->
     <div class="row">
-      <div class="input-group mt-3 mb-3 col">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Estado de Nascimento</label>
+
+      <div class="col-sm">
+        <div class="input-group mt-3 mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="StateOrigin">Estado de Nascimento</label>
+          </div>
+          <select onchange="ShowInputCity(this)" class="custom-select rounded-2" id="SelectStates">
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
+          </select>
         </div>
-        <select class="custom-select" id="SelectStates">
-          <option value="AC">Acre</option>
-          <option value="AL">Alagoas</option>
-          <option value="AP">Amapá</option>
-          <option value="AM">Amazonas</option>
-          <option value="BA">Bahia</option>
-          <option value="CE">Ceará</option>
-          <option value="DF">Distrito Federal</option>
-          <option value="ES">Espírito Santo</option>
-          <option value="GO">Goiás</option>
-          <option value="MA">Maranhão</option>
-          <option value="MT">Mato Grosso</option>
-          <option value="MS">Mato Grosso do Sul</option>
-          <option value="MG">Minas Gerais</option>
-          <option value="PA">Pará</option>
-          <option value="PB">Paraíba</option>
-          <option value="PR">Paraná</option>
-          <option value="PE">Pernambuco</option>
-          <option value="PI">Piauí</option>
-          <option value="RJ">Rio de Janeiro</option>
-          <option value="RN">Rio Grande do Norte</option>
-          <option value="RS">Rio Grande do Sul</option>
-          <option value="RO">Rondônia</option>
-          <option value="RR">Roraima</option>
-          <option value="SC">Santa Catarina</option>
-          <option value="SP">São Paulo</option>
-          <option value="SE">Sergipe</option>
-          <option value="TO">Tocantins</option>
-        </select>
       </div>
-    </div>
 
-    <div class="form-row">
-      <div class="form-group col-md-4">
-        <label class="mb-3" for="inputCity">Digite a cidade</label>
-        <input type="text" class="form-control" id="inputCity">
+      <div class="col-sm-12">
+        <div class="form-group col-md-4" id="DivInputCity">
+          <input type="text" class="form-control mt-3" placeholder="Digite a cidade" id="inputCity">
+        </div>
       </div>
-    </div>
-    </div>
 
+    </div>
+    <!-- Segunda parte do Formulário -->
     <h3 class="mt-3">Conhecendo</h3>
     <hr>
 
     <div class="row mb-3">
       <div class="col">
 
-        <label> Conhece algum projeto social?</label>
+        <label>Conhece algum projeto social?</label>
 
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+          <input class="form-check-input" type="checkbox" id="SimProjetoSocial" value="sim">
           <label class="form-check-label">Sim</label>
         </div>
 
         <div class="form-check form-check-inline mb-3">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+          <input class="form-check-input" type="checkbox" id="NaoProjetoSocial" value="nao">
           <label class="form-check-label">Não</label>
         </div>
         <input type="text" class="form-control" placeholder="Se sim, qual?">
@@ -153,18 +180,721 @@
 
     <div class="form-group">
       <label for="">Onde costuma ficar durante o dia?</label>
-      <input type="text" class="form-control" id="OndeCostumaDormir">
+      <input type="text" class="form-control" id="OndeCostumaPassarDia">
+    </div>
+    <!--  -->
+
+    <!-- Terceira parte do Formulário Saúde -->
+    <h3 class="mt-3">Saúde</h3>
+    <hr>
+
+    <!-- Você se sente saudável? -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Você se sente saudável?</span> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="saudavel" id="simSaudavel">
+          <label class="form-check-label" id="saudavelSim" for="simSaudavel">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="saudavel" id="naoSaudavel">
+          <label class="form-check-label" id="saudavelNo" for="noSaudavel">Não</label>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+
+    <!-- Faz acompanhamento médico? -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Você faz algum acompanhamento médico?</span> <br>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Sim" name="acompanhamentoMedico" id="simMedico"
+            onchange="medicalTreatment(this)">
+          <label class="form-check-label" for="simMedico">Sim</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Nao" name="acompanhamentoMedico" id="naoMedico"
+            onchange="medicalTreatment(this)">
+          <label class="form-check-label" for="noMedico">Não</label>
+        </div>
+
+
+        <!-- Caso a resposta seja SIM deve aparecer -->
+        <div class="form-row">
+          <div class="form-group col-md-4" id="inputMedical" style="display: none">
+            <label for="acompanhamentoMedico">Onde faz o seu acompanhamento médico?</label>
+            <input type="text" class="form-control" id="acompanhamentoTextMedico">
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!--  -->
+
+    <!-- Faz o uso de algum medicamento? -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Você faz o uso de algum medicamento?</span> <br>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Sim" name="usaMedicamento" id="simMedicamento"
+            onchange="medications(this)">
+          <label class="form-check-label" id="simMedico" for="simMedicamento">Sim</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Nao" name="usaMedicamento" id="noMedicamento"
+            onchange="medications(this)">
+          <label class="form-check-label" id="noMedico" for="noMedicamento">Não</label>
+        </div>
+
+        <!-- Caso a resposta seja SIM deve aparecer -->
+        <div class="form-row">
+          <div class="form-group col-md-4" id="inputMedications" style="display: none">
+            <label for="acompanhamentoMedico">De quais tipos?</label>
+            <input type="text" class="form-control" id="tipoMedicamentos">
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!--  -->
+
+    <!-- Possui deficiência? -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Possui alguma deficiência?</span> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Sim" name="temDeficiencia" id="simDeficiencia"
+            onchange="pcd(this);streetIllness(this)">
+          <label class="form-check-label" id="simDeficiencia" for="simDeficiencia">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Nao" name="temDeficiencia" id="noDeficiencia"
+            onchange="pcd(this);streetIllness(this)">
+          <label class="form-check-label" id="noDeficiencia" for="noDeficiencia">Não</label>
+        </div>
+
+        <!-- Caso a resposta seja SIM deve aparecer -->
+        <div class="form-row">
+          <div class="form-group col-md-4" id="inputPcd" style="display: none">
+            <label for="acompanhamentoMedico">Qual?</label>
+            <input type="text" class="form-control" id="deficiencia">
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <button type="button" class="btn btn-primary mt-3">Enviar</button>
+    <!-- Possui Doenca? -->
+    <div class="row mt-3">
+      <div class="col">
+        <span>Possui alguma doença?</span> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Sim" name="possuiDoenca" id="simDoenca"
+            onchange="illness(this);streetIllness(this)">
+          <label class="form-check-label" id="simDoenca" for="simDoenca">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" value="Nao" name="possuiDoenca" id="noDoenca"
+            onchange="illness(this);streetIllness(this)">
+          <label class="form-check-label" id="noDoenca" for="noDoenca">Não</label>
+        </div>
+
+        <!-- Caso a resposta seja SIM deve aparecer -->
+        <div class="form-row" id="inputIllness" style="display: none">
+          <div class="form-group col-md-4">
+            <label for="acompanhamentoMedico">Qual?</label>
+            <input type="text" class="form-control" id="doenca">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Caso DOENÇA ou DEFICIÊNCIA esteja MARCADA com sim inserir abaixo -->
+    <div class="row mt-3" id="inputStreetIlness" style="display: none">
+      <div class="col">
+        <span>Sua doença/deficiência foi adquirida na rua?</span> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="adquirirRua" id="simRua">
+          <label class="form-check-label" id="simRua" for="simRua">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="adquirirRua" id="noRua">
+          <label class="form-check-label" id="noRua" for="noRua">Não</label>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+
+    <!-- Slider ranged -->
+    <div class="container-slider">
+      <span>Qual o seu grau de mobilidade?</span>
+      <div class='range'>
+        <div class='sliderValue'>
+          <span id='SliderValeuSpan'>0</span>
+        </div>
+      </div>
+
+      <div class='field'>
+        <div class='value-left'> 0 </div>
+        <input class="range-input" id='InputRange' type='range' min='0' max='10' steps='1'>
+        <div class="value-right"> 10 </div>
+      </div>
+    </div>
+
+    <!--  -->
+    <!-- Terceira Parte -->
+    <h3 class="mt-3">Família/Relações e vínculos</h3>
+    <hr>
+
+    <div class="mt-3 col-12">
+      <label for="motivo" class="form-label">Qual o motivo de estar nas ruas?</label>
+      <input type="text" class="form-control" id="motivo">
+    </div>
+
+    <div class="mb-2 mt-3 col-12">
+      <label for="dificuldade" class="form-label">Qual a maior dificuldade encontrada nas ruas?</label>
+      <input type="text" class="form-control" id="dificuldade">
+    </div>
+
+    <div class="mb-2 mt-3 col-12">
+      <label for="familia" class="form-label">Você tem família?</label>
+
+      <div class="radio">
+        <input class="radio form-check-input" type="radio" name="optradio" id="radiosim">
+        <label class="radio form-check-label" for="radiosim"> Sim </label>
+      </div>
+
+      <div class="radio">
+        <input class="radio form-check-input" type="radio" name="optradio" id="radionao">
+        <label class="radio form-check-label" for="radionao"> Não </label>
+      </div>
+    </div>
+
+    <div class="mb-2 mt-3 col-12">
+      <label for="vinculo" class="form-label">A quem você considera a sua família ou quem tem vínculo?</label>
+      <input type="text" class="form-control" id="vinculo">
+    </div>
+
+    <div class="mb-2 mt-3 col-12">
+      <label for="vinculo" class="form-label">Sua família sabe da sua situação nas ruas?</label>
+    </div>
+
+    <div>
+      <input onchange="ShowInputFamily(this)" value="Sim" class="radio form-check-input" type="radio" name="optradio1"
+        id="radiosim">
+      <label class="radio form-check-label" for="radiosim"> Sim </label>
+    </div>
+
+    <div>
+      <input onchange="ShowInputFamily(this)" value="Nao" class="radio form-check-input" type="radio" name="optradio1"
+        id="radionao">
+      <label class="radio form-check-label" for="radionao"> Não </label>
+    </div>
+
+    <div class="mb-2 mt-3 col-12" id="DivFamilia" style="display: none;">
+      <label class="form-label">Se sim, já os contatou?</label>
+      <input type="text" class="form-control" id="contatou">
+    </div>
+
+    <div class="mb-2 mt-3 col-12">
+      <label for="conversa" class="form-label">Quando foi a última conversa?</label>
+      <input type="text" class="form-control" id="conversa">
+    </div>
+
+    <div class="mt-3 col-12">
+      <span for="chk-Yes" class="form-label">Você costuma ficar sozinho?</span>
+
+      <label class="form-check-label" for="radiosim">
+        <input class="radio form-check-input" value='Sim' type="radio" id="chk-Yes" name="RadioCheck"
+          onchange="ReasonAlone(this)" />
+        Sim
+      </label>
+
+      <label class="form-check-label" for="chk-No">
+        <input class="radio form-check-input" value='Não' type="radio" id="chk-No" name="RadioCheck"
+          onchange="ReasonAlone(this)" />
+        Não
+      </label>
+
+      <div class="form-group col-md-4" id="ShowDivInput" style="display: none">
+        <label class="form-label mt-3" for="ReasonAlone">Digite o motivo</label>
+        <input type="text" class="form-control" id="InputReasonAlone">
+
+        <label for="conversa" class="form-label">Qual a maior dificuldade estando sozinho?</label>
+        <input type="text" class="form-control" id="conversa">
+      </div>
+    </div>
+
+    <div class="mt-3 mb-3 col-12">
+      <label for="alguem" class="form-label">Está com quem?</label>
+      <input type="text" class="form-control" id="alguem">
+    </div>
+
+    <div class=" col-12">
+      <span for="chk-Yes" class="form-label">Qual a relação com essas pessoas</span>
+
+      <label class="form-check-label">
+        <input class="radio form-check-input" name="relationsPeople" value='trabalho' type="radio" id="trabalho"
+          onchange="ShowRelations(this)" />
+        Trabalho
+      </label>
+
+      <label class="form-check-label">
+        <input class="radio form-check-input" name="relationsPeople" value='afetivo' type="radio" id="afetivo"
+          onchange="ShowRelations(this)" />
+        Afetivo
+      </label>
+
+      <label class="form-check-label">
+        <input class="radio form-check-input" name="relationsPeople" value='sleepsafe' type="radio" id="sleepsafe"
+          onchange="ShowRelations(this)" />
+        Dormir seguro
+      </label>
+
+      <label class="form-check-label">
+        <input class="radio form-check-input" name="relationsPeople" value='outrarelacao' type="radio" id="outrarelacao"
+          onchange="ShowRelations(this)" />
+        Outros
+      </label>
+
+      <div class="form-group col-md-4 mt-3" id="InputOtherRelation" style="display: none">
+        <input type="text" class="form-control mb-3" id="outrorelacaoinput" placeholder="Qual?">
+      </div>
+    </div>
+
+    <!--------------ESCOLARIDADE/PROFISSÃO---------------->
+    <h3 class="mt-3">Escolaridade/Profissão</h3>
+    <hr>
+
+    <label class="form-label">Grau de instrução:</label> <br>
+
+    <div class="form-check form-check">
+      <input class="form-check-input" type="radio" onchange="ShowInputEnsinoTecnico(this)" name="optradio5"
+        id="analfabeto" value="analfabeto">
+      <label class="form-check-label mb-3" id="analfabeto" for="analfabeto">Analfabeto</label>
+    </div>
+
+    <div class="form-check form-check">
+      <input class="form-check-input" type="radio" onchange="ShowInputEnsinoTecnico(this)" name="optradio5" id="ensFund"
+        value="ensFund">
+      <label class="form-check-label mb-3" id="ensFund" for="ensFund">Ensino Fundamental</label>
+    </div>
+
+    <div class="form-check form-check">
+      <input class="form-check-input" type="radio" onchange="ShowInputEnsinoTecnico(this)" name="optradio5"
+        id="ensMedio" value="ensMedio">
+      <label class="form-check-label mb-3" id="ensMedio" for="ensMedio">Ensino Médio</label>
+    </div>
+
+    <div class="form-check form-check mb-3">
+      <input class="form-check-input" type="radio" onchange="ShowInputEnsinoTecnico(this)" name="optradio5"
+        id="ensTecnico" value="ensTecnico">
+      <label class="form-check-label" id="ensTecnico">Ensino Técnico</label>
+    </div>
+
+    <div class="form-group col-md-4" id="ensinoTecnicoInput" style="display: none">
+      <input type="text" class="form-control mb-3" id="ensinoTecnicoInput" placeholder="Qual?">
+    </div>
+
+    <div class="form-check form-check mb-3">
+      <input class="form-check-input" onchange="ShowInputEnsinoSuperior(this)" type="radio" name="optradio5"
+        id="ensSuperior" value="ensSuperior">
+      <label class="form-check-label" id="ensSuperior">Ensino Superior</label>
+    </div>
+    <!-- Arrumar o input do ensino superior, quando desselecionar ele desaparecer -->
+    <!-- só colocar mais de uma função no "onchange, pesquisar como que faz" -->
+
+    <div class="form-group col-md-4" id="ensinoSuperiorInput" style="display: none">
+      <input type="text" class="form-control mb-3" id="ensinoSuperiorInput" placeholder="Qual?">
+    </div>
+
+
+    <label for="ensinoterminou" class="form-label">Terminou de estudar o ensino selecionado?</label>
+    <div>
+      <div class="form-check">
+        <input class="form-check-input" onchange="ShowInputEnsinoSelecionado(this)" type="radio" name="optradio6"
+          id="ensinoSelecionadoSim" value="Sim">
+        <label class="radio form-check-label" for="radiosim"> Sim </label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" onchange="ShowInputEnsinoSelecionado(this)" type="radio" name="optradio6"
+          id="ensinoSelecionadoNao" value="Nao">
+        <label class="radio form-check-label" for="radionao"> Não </label>
+      </div>
+
+      <div class="form-group col-md-4" id="terminouEnsino" style="display: none">
+        <input type="text" class="form-control mt-3" id="terminouEnsino" placeholder="Se não, porque parou?">
+      </div>
+    </div>
+
+    <div class="mb-2 mt-3 col-12">
+      <label for="voltarestudar" class="form-label">Gostaria de voltar a estudar?</label>
+
+      <div class="form-check">
+        <input class="radio form-check-input" type="radio" name="optradio7" id="radiosim">
+        <label class="radio form-check-label" for="radiosim"> Sim
+      </div>
+
+      <div class="form-check">
+        <input class="radio form-check-input" type="radio" name="optradio7" id="radionao">
+        <label class="radio form-check-label" for="radionao"> Não </label>
+      </div>
+    </div>
+
+    <div class="mb-2 mt-3 col-12">
+      <label for="temprofissao" class="form-label">Tem profissão?</label>
+
+      <div class="form-check">
+        <input class="radio form-check-input" onchange="ShowInputPossuiProfissão(this)" value="Sim" type="radio" name="optradio8" id="radiosim">
+        <label class="radio form-check-label" for="radiosim"> Sim </label>
+      </div>
+
+      <div class="form-check">
+        <input class="radio form-check-input" onchange="ShowInputPossuiProfissão(this)" value="Nao" type="radio" name="optradio8" id="radionao">
+        <label class="radio form-check-label mb-3" for="radionao"> Não </label>
+      </div>
+
+      <div class="form-group col-md-4" id="possuiProfissao" style="display: none">
+        <input type="text" class="form-control" id="possuiProfissaoInput" placeholder="Se sim, qual/quais?">
+      </div>
+     
+      <div class="mb-2 mt-3 col-12">
+        <label for="fezcurso" class="form-label">Fez algum curso?</label>
+
+        <div class="form-check">
+          <input class="radio form-check-input" onchange="ShowInputPossuiCurso(this)" value="Sim" type="radio" name="optradio9" id="radiosim">
+          <label class="radio form-check-label" for="radiosim"> Sim </label>
+        </div>
+
+        <div class="form-check">
+          <input class="radio form-check-input" onchange="ShowInputPossuiCurso(this)" value="Nao" type="radio" name="optradio9" id="radionao">
+          <label class="radio form-check-label mb-3" for="radionao"> Não </label>
+        </div>
+
+        <div class="form-group col-md-4" id="possuiCurso" style="display: none">
+          <input type="text" class="form-control" id="possuiCurso" placeholder="Se sim, qual/quais?">
+        </div>
+
+      </div>
+
+      <div class="mb-2 mt-3 col-12">
+        <label for="ultimotrabalho" class="form-label">Qual foi seu último trabalho?</label>
+        <input type="text" class="form-control" id="ultimotrabalho">
+      </div>
+
+      <div class="mb-2 mt-3 col-12">
+        <label for="ultimotrabalho-tempo" class="form-label">Quanto tempo ficou?</label>
+        <input type="text" class="form-control" id="ultimotrabalho-tempo">
+      </div>
+
+      <div class="mb-2 mt-3 col-12">
+        <label for="ultimotrabalho-sair" class="form-label">Porquê saiu?</label>
+        <input type="text" class="form-control" id="ultimotrabalho-sair">
+      </div>
+
+      <div class="mb-2 mt-3 col-12">
+        <label for="voltartrabalhar" class="form-label">Pretende (voltar a) trabalhar?</label>
+        
+        <div class="form-check">
+          <input class="radio form-check-input" onchange="ShowInputVoltarTrabalhar(this)" value="Sim" type="radio" name="optradio10" id="radiosim">
+          <label class="radio form-check-label" for="radiosim"> Sim </label>
+        </div>
+
+        <div class="form-check">
+          <input class="radio form-check-input" onchange="ShowInputVoltarTrabalhar(this)" value="Nao" type="radio" name="optradio10" id="radionao">
+          <label class="radio form-check-label mb-3" for="radionao"> Não </label>
+        </div>
+
+        <div class="form-group col-md-4" id="voltarTrabalhar" style="display: none">
+          <input type="text" class="form-control" id="voltarTrablharInput" placeholder="Se sim, qual profissão gostaria?">
+        </div>
+        
+      </div>
+
+      <div class="mb-2 mt-3 col-12">
+        <label for="qualificacoes" class="form-label">Quais qualificações/talentos(o que você faz e gosta e as
+          pessoas te aplaudem)?</label>
+        <input type="text" class="form-control" id="qualificacoes">
+      </div>
+
+      <h3 class="mt-3">Violência e Violação de Direitos</h3>
+      <hr>
+
+      <div class="row mt-3">
+        <div class="col">
+          <span>Já sofreu algum tipo de violência nas ruas?</span> <br>
+
+          <div class="form-check form-check-inline mb-3">
+            <input class="form-check-input" type="radio" value="Sim" name="violenciaRuas" id="SimViolencia"
+              onchange="ShowInputViolencia(this)">
+            <label class="form-check-label" id="SimViolencia">Sim</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" value="Nao" name="violenciaRuas" id="NaoViolencia"
+              onchange="ShowInputViolencia(this)">
+            <label class="form-check-label" id="NaoViolencia">Não</label>
+          </div>
+
+          <!-- Caso a resposta seja SIM deve aparecer -->
+          <div class="form-row mb-3">
+            <div class="form-group col-md-6" id="ViolenciaRuasInput" style="display: none">
+              <input type="text" class="form-control mb-3" id="ComoSentiu" placeholder="Como se sentiu?">
+              <input type="text" class="form-control" id="ComoResolveu" placeholder="Como resolveu?">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="mt-3">Políticas Públicas</h3>
+      <hr>
+
+      <div class="row mt-3">
+        <div class="col">
+          <span class="mb-3">Você frequenta algum serviço público?</span> <br>
+
+          <div class="form-check form-check-inline mb-3">
+            <input class="form-check-input" type="radio" value="Sim" name="ServicoPublico" id="SimPublico"
+              onchange="ShowInputServicoPublico(this)">
+            <label class="form-check-label" id="SimViolencia">Sim</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" value="Nao" name="ServicoPublico" id="NaoPublico"
+              onchange="ShowInputServicoPublico(this)">
+            <label class="form-check-label" id="NaoViolencia">Não</label>
+          </div>
+
+          <!-- Caso a resposta seja SIM deve aparecer -->
+          <div class="form-row mb-3">
+            <div class="form-group col-md-6" id="InputServicoPublico" style="display: none">
+              <input type="text" class="form-control mb-3" id="QualServicoPublico" placeholder="Qual?">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="mt-3">Perspectivas</h3>
+      <hr>
+
+      <div class="row mt-3">
+        <div class="col">
+          <span class="mb-3">Você tem planos?</span> <br>
+
+          <div class="form-check form-check-inline mb-3">
+            <input class="form-check-input" type="radio" value="Sim" name="planos" id="simPlanos"
+              onchange="ShowInputPlanos(this)">
+            <label class="form-check-label" id="simPlanos">Sim</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" value="Nao" name="planos" id="naoPlanos"
+              onchange="ShowInputPlanos(this)">
+            <label class="form-check-label" id="naoPlanos">Não</label>
+          </div>
+
+          <!-- Caso a resposta seja SIM deve aparecer -->
+          <div class="form-row mb-3">
+            <div class="form-group col-md-6" id="PlanosInput" style="display: none">
+              <input type="text" class="form-control mb-3" id="quaisPlanos" placeholder="Quais?">
+              <input type="text" class="form-control" id="oqFalta" placeholder="O que falta para realizá-los?">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label class="form-label">Do que sente falta ou necessidade</label>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="familia" id="familia">
+          <label class="form-check-label" for="CheckedFamilia"> Família </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="trabalho" id="trabalho">
+          <label class="form-check-label" for="CheckedTrabalho"> Trabalho </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="banho/roupa" id="banho/roupa">
+          <label class="form-check-label" for="CheckedBanho"> Banho/ Roupa limpa </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="acreditar" id="acreditar">
+          <label class="form-check-label" for="CheckedAcreditar"> Acreditar que eu posso </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="dinheiro" id="dinheiro">
+          <label class="form-check-label" for="CheckedDinheiro"> Dinheiro </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="minhaCidade" id="minhaCidade">
+          <label class="form-check-label" for="CheckedCidade"> Da minha cidade </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" onchange="ShowInputSenteFalta(this)" type="checkbox" value="outraFalta"
+            id="outraFalta">
+          <label class="form-check-label" for="CheckedOutro"> Outro </label>
+        </div>
+
+        <div class="form-row mb-3">
+          <div class="form-group col-md-6" id="SenteFalta" style="display: none">
+            <input type="text" class="form-control mt-3" id="SenteFaltaDeQue" placeholder="De que?">
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col">
+          <span class="mb-3">Você acha que o Ninho Social / Projeto Lavanderia pode ter auxiliar?</span> <br>
+
+          <div class="form-check form-check-inline mb-3">
+            <input class="form-check-input" type="radio" value="Sim" name="AjudaNinhoSocial" id="SimNinhoSocial"
+              onchange="InputAjudaNinhoSocial(this)">
+            <label class="form-check-label" id="simPlanos">Sim</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" value="Nao" name="AjudaNinhoSocial" id="NãoNinhoSocial"
+              onchange="InputAjudaNinhoSocial(this)">
+            <label class="form-check-label" id="naoPlanos">Não</label>
+          </div>
+
+          <!-- Caso a resposta seja SIM deve aparecer -->
+          <div class="form-row mb-3">
+            <div class="form-group col-md-6" id="ShowInputAjudaNinhoSocial" style="display: none">
+              <input type="text" class="form-control mb-3" id="quaisPlanos" placeholder="Como?">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="mt-3">Projeto Lavanderia</h3>
+      <hr>
+      <i>
+        <h5 class="mt-3">Explicação sobre o banho oferecido</h5>
+      </i>
+
+      <div>
+        <label class="form-label"> Você tem interesse? </label> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" name="interesse" type="radio" id="interesseLavanderia" value="Sim">
+          <label class="form-check-label" for="inlineCheckbox1">Sim</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" name="interesse" type="radio" id="interesseLavanderia" value="Nao">
+          <label class="form-check-label" for="inlineCheckbox2">Não</label>
+        </div>
+
+      </div>
+
+      <i>
+        <h5 class="mt-3">Explicação sobre a lavandeira oferecida</h5>
+      </i>
+
+      <div>
+        <label class="form-label"> Você tem interesse? </label> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" onchange="InputInteresseLavanderia(this)" name="interesse" type="radio"
+            id="interesseLavanderia" value="Sim">
+          <label class="form-check-label" for="inlineCheckbox1">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" onchange="InputInteresseLavanderia(this)" name="interesse" type="radio"
+            id="interesseLavanderia" value="Nao">
+          <label class="form-check-label" for="inlineCheckbox2">Não</label>
+        </div>
+
+        <div class="form-row mb-3">
+          <div class="form-group col-md-3 mt-3" id="ShowInputLavanderia" style="display: none">
+            <input type="number" class="form-control mb-3" id="quantasPecas"
+              placeholder="Quantas peças trouxe pra lavar?">
+          </div>
+        </div>
+      </div>
+
+      <i>
+        <h5 class="mt-3">Explicação sobre cursos e atendimento do Ninho Social</h5>
+      </i>
+
+      <div>
+        <label class="form-label"> Você tem interesse? </label> <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" onchange="ShowInputContato(this)" name="contato" type="radio" value="Sim">
+          <label class="form-check-label" for="inlineCheckbox1">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" onchange="ShowInputContato(this)" name="contato" type="radio" value="Nao">
+          <label class="form-check-label" for="inlineCheckbox2">Não</label>
+        </div>
+
+        <div class="form-row mb-3">
+          <div class="form-group col-md-6 mt-3" id="InputContato" style="display: none">
+            <input type="text" class="form-control mb-3" id="contato"
+              placeholder="Possui um contato para avisarmos dias e horários?">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label class="form-label mb-3" for="exampleInputEmail1">Como soube do Ninho Social / Projeto
+          Lavanderia</label>
+        <input type="text" class="form-control" id="comoSoube">
+      </div>
+
+      <div>
+        <label class="form-label">Sabe onde fica o poupatempo mais próximo daqui?</label>
+        <div class="form-check form-check-inline m-lg-1">
+          <input class="form-check-input" type="radio" name="poupatempo" id="poupatemposim" value="sim">
+          <label class="form-check-label" for="inlineCheckbox1">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="poupatempo" id="poupatemponao" value="nao">
+          <label class="form-check-label" for="inlineCheckbox2">Não</label>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label class="form-label mb-3 mt-3" for="religiao">Você tem uma religião?</label>
+        <input type="text" class="form-control" id="religiao">
+      </div>
+
+      <div>
+        <label class="form-label">Você se sente bem após o banho?</label>
+        <div class="form-check form-check-inline m-lg-1">
+          <input class="form-check-input" type="radio" name="aposbanho" id="aposbanho" value="sim">
+          <label class="form-check-label">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="aposbanho" id="aposbanho" value="nao">
+          <label class="form-check-label">Não</label>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label class="form-label mb-3 mt-3" for="musica">Qual música gosta mais de ouvir</label>
+        <input type="text" class="form-control" id="musica">
+      </div>
+
+      <button type="button" class="btn btn-primary mt-3">Enviar</button>
   </form>
 
   <script src="./js/Form.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="./js/Slider.js"></script>
+  <script src="./js/Script.js"></script>
+  <script src="../src//js/bootstrap.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <script
     src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js'></script>
-  <script>
-  </body >
-  </html >
+</body>
+
+</html>
